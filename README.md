@@ -1,5 +1,5 @@
 # GraphQL Service
 
-Used APIs:
+APIs that are used to collect market data:
    * CoinAPI
    * Coingecko

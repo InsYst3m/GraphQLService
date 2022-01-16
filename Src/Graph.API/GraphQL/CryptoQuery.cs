@@ -1,10 +1,13 @@
-﻿namespace Graph.API.GraphQL
+﻿using Graph.API.Models;
+using Graph.API.Services.Interfaces;
+
+namespace Graph.API.GraphQL
 {
     public class CryptoQuery
     {
-        public int GetIntValue()
+        public async Task<CryptoAsset> GetCryptoAssetAsync([Service] ICryptoService cryptoService)
         {
-            return 5;
+            return await cryptoService.GetCryptoAssetAsync("btc");
         }
     }
 }
