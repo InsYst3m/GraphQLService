@@ -5,9 +5,9 @@ namespace Graph.API.GraphQL
 {
     public class CryptoQuery
     {
-        public async Task<CryptoAsset> GetCryptoAssetAsync([Service] ICryptoService cryptoService)
+        public async Task<CryptoAsset?> GetCryptoAssetAsync([Service] ICryptoService cryptoService)
         {
-            return await cryptoService.GetCryptoAssetAsync("btc");
+            return await cryptoService.GetCryptoAssetAsync("bitcoin");
         }
     }
 }

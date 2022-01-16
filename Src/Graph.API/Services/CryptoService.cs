@@ -1,6 +1,7 @@
 ﻿using Graph.API.General;
 using Graph.API.Models;
 using Graph.API.Services.Interfaces;
+using System.Text.Json;
 
 namespace Graph.API.Services
 {
@@ -17,14 +18,32 @@ namespace Graph.API.Services
 
             _httpClient = httpClientFactory.CreateClient(Constants.HTTP_CLIENT_COIN_GECKO_KEY);
         }
-
-        public Task<CryptoAsset> GetCryptoAssetAsync(string abbreviation)
+        
+        public async Task<CryptoAsset?> GetCryptoAssetAsync(string name)
         {
-            return Task.FromResult(new CryptoAsset
+            string route = $"coins/{name}";
+            string jsonResponse = string.Empty;
+
+            try
             {
-                Abbreviation = "BTC",
-                Name = "Bitcoin"
-            });
+                HttpResponseMessage httpResponseMessage = await _httpClient.GetAsync(route);
+                jsonResponse = await httpResponseMessage.Content.ReadAsStringAsync();
+
+                httpResponseMessage.EnsureSuccessStatusCode();
+
+                CryptoAsset? cryptoAsset = JsonSerializer.Deserialize<CryptoAsset>(jsonResponse);
+
+                return cryptoAsset;
+            }
+            catch (Exception ex)
+            {
+                if (!string.IsNullOrWhiteSpace(jsonResponse))
+                {
+                    ex.Data.Add("JsonResponse", jsonResponse);
+                }
+
+                throw;
+            }
         }
 
         public Task<List<CryptoAsset>> GetCryptoAssetsAsync()

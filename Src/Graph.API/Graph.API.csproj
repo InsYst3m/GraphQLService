@@ -12,4 +12,8 @@
 	  <PackageReference Include="HotChocolate.Data" Version="12.5.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Exceptions\" />
+	</ItemGroup>
+
 </Project>
