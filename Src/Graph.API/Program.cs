@@ -1,6 +1,36 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Graph.API.Extensions;
 
-app.MapGet("/", () => "Hello World!");
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
+
+
+#region Configure Services
+
+IServiceCollection services = builder.Services;
+
+services.ConfigureGraphQLServer();
+
+#endregion
+
+
+#region Configure Pipeline
+
+WebApplication app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
+app
+    .UseRouting()
+    .UseEndpoints(endpoints =>
+    {
+        endpoints.MapGraphQL();
+    });
+
+#endregion
+
 
 app.Run();
+
