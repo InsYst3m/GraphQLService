@@ -49,7 +49,7 @@ app
     .UseRouting()
     .UseEndpoints(endpoints =>
     {
-        endpoints.MapGraphQL();
+        endpoints.MapGraphQL(String.Empty);
     });
 
 #endregion
