@@ -49,7 +49,8 @@ app
     .UseRouting()
     .UseEndpoints(endpoints =>
     {
-        endpoints.MapGraphQL(String.Empty);
+        endpoints.MapGraphQLHttp(string.Empty);
+        endpoints.MapGraphQLSchema("/sdl");
     });
 
 #endregion
