@@ -22,13 +22,11 @@ jobs:
         dotnet-version: 5.0.x
         
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ./GraphQLService.sln
+      run: |
+        dotnet restore ./Src/GraphQLService.sln
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
-      working-directory: ./GraphQLService.sln
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ./GraphQLService.sln
