@@ -29,3 +29,9 @@ jobs:
       run: |
         dotnet build ./Src/GraphQLService.sln --configuration Release --no-restore
         dotnet publish ./Src/GraphQLService.sln -c Release -o ../Build
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: GraphQLService-artifact
+        path: ../Build/
