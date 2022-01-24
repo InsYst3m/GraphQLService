@@ -31,8 +31,8 @@ services.AddHttpClient(
 
 services.AddScoped<ICryptoService, CryptoService>();
 
-services.AddAuthentication();
-services.AddAuthorization();
+//services.AddAuthentication();
+//services.AddAuthorization();
 
 services.ConfigureGraphQLServer();
 
@@ -56,10 +56,11 @@ app
     {
         endpoints
             .MapGraphQLHttp(string.Empty)
-            .RequireAuthorization();
+            //.RequireAuthorization()
+            ;
 
         endpoints
-            .MapGraphQLSchema("/sdl")
+            .MapGraphQLSchema("/schema")
             .AllowAnonymous();
     });
 
