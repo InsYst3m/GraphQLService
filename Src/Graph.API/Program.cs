@@ -50,8 +50,8 @@ if (app.Environment.IsDevelopment())
 
 app
     .UseRouting()
-    .UseAuthentication()
-    .UseAuthorization()
+    //.UseAuthentication()
+    //.UseAuthorization()
     .UseEndpoints(endpoints =>
     {
         endpoints
