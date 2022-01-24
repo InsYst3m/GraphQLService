@@ -31,6 +31,9 @@ services.AddHttpClient(
 
 services.AddScoped<ICryptoService, CryptoService>();
 
+services.AddAuthentication();
+services.AddAuthorization();
+
 services.ConfigureGraphQLServer();
 
 #endregion
@@ -47,10 +50,17 @@ if (app.Environment.IsDevelopment())
 
 app
     .UseRouting()
+    .UseAuthentication()
+    .UseAuthorization()
     .UseEndpoints(endpoints =>
     {
-        endpoints.MapGraphQLHttp(string.Empty);
-        endpoints.MapGraphQLSchema("/sdl");
+        endpoints
+            .MapGraphQLHttp(string.Empty)
+            .RequireAuthorization();
+
+        endpoints
+            .MapGraphQLSchema("/sdl")
+            .AllowAnonymous();
     });
 
 #endregion
