@@ -41,4 +41,8 @@ jobs:
     environment: PROD
     steps:
       - name: 📂 Deploy artifacts
-        run: echo ${{secrets.FTPUSERNAME}}
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ftp://graphservice.somee.com
+          username: ${{ secrets.FTPUSERNAME }}
+          password: ${{ secrets.FTPPASSWORD }}
