@@ -19,9 +19,9 @@ namespace Graph.API.Services
             _httpClient = httpClientFactory.CreateClient(Constants.HTTP_CLIENT_COIN_GECKO_KEY);
         }
         
-        public async Task<CryptoAsset?> GetCryptoAssetAsync(string name)
+        public async Task<CryptoAsset?> GetCryptoAssetAsync(string geckoId)
         {
-            string route = $"coins/{name}";
+            string route = $"coins/{geckoId}";
             string jsonResponse = string.Empty;
 
             try
@@ -44,11 +44,6 @@ namespace Graph.API.Services
 
                 throw;
             }
-        }
-
-        public Task<List<CryptoAsset>> GetCryptoAssetsAsync()
-        {
-            throw new NotImplementedException();
         }
     }
 }

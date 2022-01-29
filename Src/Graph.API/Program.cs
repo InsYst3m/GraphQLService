@@ -54,14 +54,7 @@ app
     //.UseAuthorization()
     .UseEndpoints(endpoints =>
     {
-        endpoints
-            .MapGraphQLHttp(string.Empty)
-            //.RequireAuthorization()
-            ;
-
-        endpoints
-            .MapGraphQLSchema("/schema")
-            .AllowAnonymous();
+        endpoints.MapGraphQL();
     });
 
 #endregion

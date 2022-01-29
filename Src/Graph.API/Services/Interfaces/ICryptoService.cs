@@ -4,8 +4,6 @@ namespace Graph.API.Services.Interfaces
 {
     public interface ICryptoService
     {
-        Task<List<CryptoAsset>> GetCryptoAssetsAsync();
-
-        Task<CryptoAsset?> GetCryptoAssetAsync(string name);
+        Task<CryptoAsset?> GetCryptoAssetAsync(string geckoId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Graph.API.Models.CoinGecko;
+using System.Text.Json.Serialization;
 
 namespace Graph.API.Models
 {
@@ -9,5 +10,8 @@ namespace Graph.API.Models
 
         [JsonPropertyName("symbol")]
         public string Abbreviation { get; set; } = string.Empty;
+
+        [JsonPropertyName("market_data")]
+        public MarketData? MarketData { get; set; }
     }
 }
