@@ -36,3 +36,10 @@ jobs:
       with:
         name: GraphQLService-artifact
         path: /home/runner/work/GraphQLService/Build/
+        
+    - name: 📂 Deploy artifacts
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ftp://graphservice.somee.com
+        username: ${{ FTPUSERNAME }}
+        password: ${{ FTPPASSWORD }}
