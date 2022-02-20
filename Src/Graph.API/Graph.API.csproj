@@ -7,14 +7,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Exceptions\**" />
+	  <Content Remove="Exceptions\**" />
+	  <EmbeddedResource Remove="Exceptions\**" />
+	  <None Remove="Exceptions\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="HotChocolate" Version="12.5.0" />
 	  <PackageReference Include="HotChocolate.AspNetCore" Version="12.5.0" />
 	  <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="12.5.0" />
 	  <PackageReference Include="HotChocolate.Data" Version="12.5.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Exceptions\" />
 	</ItemGroup>
 
 </Project>
