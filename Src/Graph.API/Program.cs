@@ -29,6 +29,8 @@ services.AddHttpClient(
         httpClient.BaseAddress = new Uri(baseAddress);
     });
 
+services.AddCors();
+
 services.AddScoped<ICryptoService, CryptoService>();
 
 //services.AddAuthentication();
@@ -50,6 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app
     .UseRouting()
+    .UseCors(c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
     //.UseAuthentication()
     //.UseAuthorization()
     .UseEndpoints(endpoints =>
