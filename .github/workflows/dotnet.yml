@@ -36,13 +36,13 @@ jobs:
         name: GraphQLService-artifact
         path: /home/runner/work/GraphQLService/Build/
         
-  deployment:
-    runs-on: ubuntu-latest
-    environment: PROD
-    steps:
-      - name: 📂 Deploy artifacts
-        uses: SamKirkland/FTP-Deploy-Action@4.2.0
-        with:
-          server: ftp://graphservice.somee.com
-          username: ${{ secrets.FTPUSERNAME }}
-          password: ${{ secrets.FTPPASSWORD }}
+  #deployment:
+  #  runs-on: ubuntu-latest
+  #  environment: PROD
+  #  steps:
+  #    - name: 📂 Deploy artifacts
+  #      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+  #      with:
+  #        server: ftp://graphservice.somee.com
+  #        username: ${{ secrets.FTPUSERNAME }}
+  #        password: ${{ secrets.FTPPASSWORD }}

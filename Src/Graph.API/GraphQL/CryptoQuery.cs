@@ -17,7 +17,9 @@ namespace Graph.API.GraphQL
             { "link", "chainlink" },
             { "near", "near" },
             { "uni", "unicorn-token" },
-            { "xlm", "stellar" }
+            { "xlm", "stellar" },
+            { "umee", "umee" },
+            { "xch", "chia" },
         };
 
         public async Task<CryptoAsset?> GetCryptoAssetAsync([Service] ICryptoService cryptoService, string abbreviation)
