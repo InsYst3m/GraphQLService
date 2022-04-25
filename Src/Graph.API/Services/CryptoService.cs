@@ -2,6 +2,7 @@
 using Graph.API.Models;
 using Graph.API.Models.CoinGecko;
 using Graph.API.Services.Interfaces;
+using Graph.DataAccess.Services.Interfaces;
 using System.Text.Json;
 
 namespace Graph.API.Services
@@ -9,13 +10,12 @@ namespace Graph.API.Services
     public class CryptoService : ICryptoService
     {
         private readonly HttpClient _httpClient;
+        private readonly IDataAccessService _dataAccessService;
 
-        public CryptoService(IHttpClientFactory httpClientFactory)
+        public CryptoService(IHttpClientFactory httpClientFactory, IDataAccessService dataAccessService)
         {
-            if (httpClientFactory == null)
-            {
-                throw new ArgumentNullException(nameof(httpClientFactory));
-            }
+            _ = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            _dataAccessService = dataAccessService ?? throw new ArgumentNullException(nameof(dataAccessService));
 
             _httpClient = httpClientFactory.CreateClient(Constants.HTTP_CLIENT_COIN_GECKO_KEY);
         }

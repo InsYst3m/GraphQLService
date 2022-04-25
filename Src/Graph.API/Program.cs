@@ -3,11 +3,13 @@ using Graph.API.Extensions;
 using Graph.API.General;
 using Graph.API.Services;
 using Graph.API.Services.Interfaces;
+using Graph.DataAccess.Extensions;
+using Graph.DataAccess.Services;
+using Graph.DataAccess.Services.Interfaces;
 using Microsoft.Extensions.Options;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
-
 
 #region Configure Services
 
@@ -18,6 +20,8 @@ services.Configure<GraphServiceSettings>(configuration.GetSection(GraphServiceSe
 
 services.Configure<CoinGeckoSettings>(configuration.GetSection(CoinGeckoSettings.SECTION_NAME),
     options => options.BindNonPublicProperties = true);
+
+services.AddDataAccessLayer(configuration.GetConnectionString("DefaultConnection"));
 
 services.AddHttpClient(
     Constants.HTTP_CLIENT_COIN_GECKO_KEY,
@@ -31,8 +35,10 @@ services.AddHttpClient(
 
 services.AddCors();
 
+services.AddScoped<IDataAccessService, DataAccessService>();
 services.AddScoped<ICryptoService, CryptoService>();
 
+// TODO: google auth
 //services.AddAuthentication();
 //services.AddAuthorization();
 
