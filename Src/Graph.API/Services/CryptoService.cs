@@ -76,5 +76,10 @@ namespace Graph.API.Services
                 throw;
             }
         }
+
+        public async Task<List<DataAccess.Entities.CryptoAsset>> GetSupportedCryptoAssetsAsync()
+        {
+            return await _dataAccessService.GetCryptoAssetsLookupAsync();
+        }
     }
 }

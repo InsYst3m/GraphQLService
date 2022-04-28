@@ -6,39 +6,35 @@ namespace Graph.API.GraphQL
 {
     public class CryptoQuery
     {
-        private readonly Dictionary<string, string> _cryptoAssetsLookup = new()
+        public async Task<List<string>> GetSupportedCryptoAssets([Service] ICryptoService cryptoService)
         {
-            { "btc", "bitcoin" },
-            { "eth", "ethereum" },
-            { "xrp", "ripple" },
-            { "dot", "polkadot" },
-            { "atom", "cosmos" },
-            { "cro", "crypto-com-chain" },
-            { "link", "chainlink" },
-            { "near", "near" },
-            { "uni", "unicorn-token" },
-            { "xlm", "stellar" },
-            { "umee", "umee" },
-            { "xch", "chia" },
-        };
+            var cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
+
+            if (cryptoAssetsLookup == null || !cryptoAssetsLookup.Any())
+            {
+                return new List<string>();
+            }
+
+            return cryptoAssetsLookup.Select(x => x.Abbreviation).ToList();
+        }
 
         public async Task<CryptoAsset?> GetCryptoAssetAsync([Service] ICryptoService cryptoService, string abbreviation)
         {
-            _cryptoAssetsLookup.TryGetValue(abbreviation, out string? geckoId);
+            List<DataAccess.Entities.CryptoAsset> cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
 
-            if (geckoId == null)
+            if (!cryptoAssetsLookup.Any())
             {
                 return null;
             }
 
-            return await cryptoService.GetCryptoAssetAsync(geckoId);
-        }
+            var cryptoAsset = cryptoAssetsLookup.FirstOrDefault(x => x.Abbreviation == abbreviation);
 
-        public List<string> GetAbbreviations()
-        {
-            List<string> abbreviations = _cryptoAssetsLookup.Select(x => x.Key).ToList();
+            if (cryptoAsset == null)
+            {
+                return null;
+            }
 
-            return abbreviations;
+            return await cryptoService.GetCryptoAssetAsync(cryptoAsset.CoinGeckoAbbreviation);
         }
 
         public async Task<GlobalMarketData?> GetGlobalCryptoMarketDataAsync([Service] ICryptoService cryptoService)

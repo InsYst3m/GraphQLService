@@ -1,5 +1,8 @@
-﻿namespace Graph.DataAccess.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Graph.DataAccess.Entities
 {
+    [Table("CryptoAssets")]
     public class CryptoAsset
     {
         public long Id { get; set; }
