@@ -1,7 +1,6 @@
 ﻿namespace Graph.API.Models.CoinGecko
 {
-    public class CurrentPrice : Currency
+    public class HighTwentyFourHours : Currency
     {
-        
     }
 }

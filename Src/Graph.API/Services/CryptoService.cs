@@ -1,6 +1,7 @@
 ﻿using Graph.API.General;
 using Graph.API.Models;
 using Graph.API.Models.CoinGecko;
+using Graph.API.Providers;
 using Graph.API.Services.Interfaces;
 using Graph.DataAccess.Services.Interfaces;
 using System.Text.Json;
@@ -9,6 +10,8 @@ namespace Graph.API.Services
 {
     public class CryptoService : ICryptoService
     {
+        private const string GET_CRYPTO_ASSET_ROUTE = "coins/{0}?localization={1:L}&tickers={2:L}&market_data={3:L}&community_data={4:L}&developer_data={5:L}&sparkline={6:L}";
+
         private readonly HttpClient _httpClient;
         private readonly IDataAccessService _dataAccessService;
 
@@ -22,12 +25,22 @@ namespace Graph.API.Services
         
         public async Task<CryptoAsset?> GetCryptoAssetAsync(string geckoId)
         {
-            // https://api.coingecko.com/api/v3/coins/bitcoin
-            string route = $"coins/{geckoId}";
+            bool useLocalization = false;
+            bool useTickers = false;
+            bool useMarketData = true;
+            bool useCommunityData = false;
+            bool useDeveloperData = false;
+            bool useSparkline = false;
             string jsonResponse = string.Empty;
 
             try
             {
+                string route = 
+                    string.Format(
+                        new CustomFormatProvider(),
+                        GET_CRYPTO_ASSET_ROUTE,
+                        geckoId, useLocalization, useTickers, useMarketData, useCommunityData, useDeveloperData, useSparkline);
+                
                 HttpResponseMessage httpResponseMessage = await _httpClient.GetAsync(route);
                 jsonResponse = await httpResponseMessage.Content.ReadAsStringAsync();
 

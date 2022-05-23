@@ -29,4 +29,8 @@
 	  <ProjectReference Include="..\Graph.DataAccess\Graph.DataAccess.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Providers\Interfaces\" />
+	</ItemGroup>
+
 </Project>
