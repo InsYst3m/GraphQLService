@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Graph.API.Models.CoinGecko
+namespace Graph.Domain.Entities.CoinGecko
 {
     public class GlobalMarketData
     {
@@ -11,7 +11,7 @@ namespace Graph.API.Models.CoinGecko
     public class Data
     {
         [JsonPropertyName("active_cryptocurrencies")]
-        public decimal ActiveCryptoCurrencies { get; set; }
+        public long ActiveCryptoCurrencies { get; set; }
 
         [JsonPropertyName("total_market_cap")]
         public TotalMarketCap TotalMarketCap { get; set; } = null!;

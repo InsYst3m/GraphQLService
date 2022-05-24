@@ -1,9 +1,8 @@
-﻿using Graph.API.Models.CoinGecko;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Graph.API.Models
+namespace Graph.Domain.Entities.CoinGecko
 {
-    public class CryptoAsset
+    public class CryptoAssetData
     {
         [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;

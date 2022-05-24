@@ -1,9 +1,9 @@
 ﻿using Graph.API.General;
-using Graph.API.Models;
-using Graph.API.Models.CoinGecko;
 using Graph.API.Providers;
 using Graph.API.Services.Interfaces;
+using Graph.API.ViewModels;
 using Graph.DataAccess.Services.Interfaces;
+using Graph.Domain.Entities.CoinGecko;
 using System.Text.Json;
 
 namespace Graph.API.Services
@@ -46,9 +46,62 @@ namespace Graph.API.Services
 
                 httpResponseMessage.EnsureSuccessStatusCode();
 
-                CryptoAsset? cryptoAsset = JsonSerializer.Deserialize<CryptoAsset>(jsonResponse);
+                CryptoAssetData? cryptoAssetData = JsonSerializer.Deserialize<CryptoAssetData>(jsonResponse);
 
-                return cryptoAsset;
+                if (cryptoAssetData is null)
+                {
+                    return null;
+                }
+
+                return new CryptoAsset
+                {
+                    Abbreviation = cryptoAssetData.Abbreviation,
+                    Name = cryptoAssetData.Name,
+                    CurrentPriceUsd = cryptoAssetData.MarketData?.CurrentPrice?.Usd ?? 0,
+                    CapitalizationUsd = cryptoAssetData.MarketData?.MarketCap?.Usd ?? 0,
+                    Rank = cryptoAssetData.MarketData?.MarketCapRank ?? 0,
+
+                    HighTwentyFourHoursUsd = cryptoAssetData.MarketData?.HighTwentyFourHours?.Usd ?? 0,
+                    AllTimeHighPriceUsd = cryptoAssetData.MarketData?.AllTimeHigh?.Usd ?? 0,
+                    AllTimeHighDate = cryptoAssetData.MarketData?.AllTimeHighDate?.UsdDateTime ?? DateTime.MinValue,
+                    AllTimeHighChangePercentage = 
+                        cryptoAssetData.MarketData?.AllTimeHighChangePercentage is not null
+                            ? $"{cryptoAssetData.MarketData.AllTimeHighChangePercentage.Usd}%"
+                            : string.Empty,
+
+                    LowTwentyFourHoursUsd = cryptoAssetData.MarketData?.LowTwentyFourHours?.Usd ?? 0,
+                    AllTimeLowPriceUsd = cryptoAssetData.MarketData?.AllTimeLow?.Usd ?? 0,
+                    AllTimeLowDate = cryptoAssetData.MarketData?.AllTimeLowDate?.UsdDateTime ?? DateTime.MinValue,
+                    AllTimeLowChangePercentage =
+                        cryptoAssetData.MarketData?.AllTimeLowChangePercentage is not null
+                            ? $"{cryptoAssetData.MarketData.AllTimeLowChangePercentage.Usd}%"
+                            : string.Empty,
+
+                    PriceChangePercentageTwentyFourHours =
+                        cryptoAssetData.MarketData?.PriceChangePercentageTwentyFourHours is not null
+                            ? $"{cryptoAssetData.MarketData.PriceChangePercentageTwentyFourHours}%"
+                            : string.Empty,
+
+                    PriceChangePercentageSevenDays = 
+                        cryptoAssetData.MarketData?.PriceChangePercentageSevenDays is not null
+                            ? $"{cryptoAssetData.MarketData.PriceChangePercentageSevenDays}%"
+                            : string.Empty,
+
+                    PriceChangePercentageThirtyDays =
+                        cryptoAssetData.MarketData?.PriceChangePercentageThirtyDays is not null
+                            ? $"{cryptoAssetData.MarketData.PriceChangePercentageThirtyDays}%"
+                            : string.Empty,
+
+                    PriceChangePercentageSixtyDays =
+                        cryptoAssetData.MarketData?.PriceChangePercentageSixtyDays is not null
+                            ? $"{cryptoAssetData.MarketData.PriceChangePercentageSixtyDays}%"
+                            : string.Empty,
+
+                    PriceChangePercentageOneYear =
+                        cryptoAssetData.MarketData?.PriceChangePercentageOneYear is not null
+                            ? $"{cryptoAssetData.MarketData.PriceChangePercentageOneYear}%"
+                            : string.Empty
+                };
             }
             catch (Exception ex)
             {
@@ -62,7 +115,7 @@ namespace Graph.API.Services
         }
 
         /// <inheritdoc cref="ICryptoService.GetGlobalCryptoMarketDataAsync"/>
-        public async Task<GlobalMarketData?> GetGlobalCryptoMarketDataAsync()
+        public async Task<GlobalMarket?> GetGlobalCryptoMarketDataAsync()
         {
             // https://api.coingecko.com/api/v3/global
             string route = $"global";
@@ -77,7 +130,16 @@ namespace Graph.API.Services
 
                 GlobalMarketData? globalMarketData = JsonSerializer.Deserialize<GlobalMarketData>(jsonResponse);
 
-                return globalMarketData;
+                if (globalMarketData is null)
+                {
+                    return null;
+                }
+
+                return new GlobalMarket
+                {
+                    ActiveCryptoCurrencies = globalMarketData.Data.ActiveCryptoCurrencies,
+                    CapitalizationUsd = globalMarketData.Data.TotalMarketCap.Usd
+                };
             }
             catch (Exception ex)
             {

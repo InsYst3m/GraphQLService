@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
+using Graph.API.Models.CoinGecko;
 
-namespace Graph.API.Models.CoinGecko
+namespace Graph.Domain.Entities.CoinGecko
 {
     public class MarketData
     {
@@ -37,39 +38,19 @@ namespace Graph.API.Models.CoinGecko
         [JsonPropertyName("low_24h")]
         public LowTwentyFourHours? LowTwentyFourHours { get; set; }
 
-        [GraphQLIgnore]
         [JsonPropertyName("price_change_percentage_24h")]
         public decimal PriceChangePercentageTwentyFourHours { get; set; }
 
-        [JsonIgnore]
-        public string PriceChangeTwentyFourHoursPercentage => $"{PriceChangePercentageTwentyFourHours}%";
-
-        [GraphQLIgnore]
         [JsonPropertyName("price_change_percentage_7d")]
         public decimal PriceChangePercentageSevenDays { get; set; }
 
-        [JsonIgnore]
-        public string PriceChangeSevenDaysPercentage => $"{PriceChangePercentageSevenDays}%";
-
-        [GraphQLIgnore]
         [JsonPropertyName("price_change_percentage_30d")]
         public decimal PriceChangePercentageThirtyDays { get; set; }
 
-        [JsonIgnore]
-        public string PriceChangeThirtyDaysPercentage => $"{PriceChangePercentageThirtyDays}%";
-
-        [GraphQLIgnore]
         [JsonPropertyName("price_change_percentage_60d")]
         public decimal PriceChangePercentageSixtyDays { get; set; }
 
-        [JsonIgnore]
-        public string PriceChangeSixtyDaysPercentage => $"{PriceChangePercentageSixtyDays}%";
-
-        [GraphQLIgnore]
         [JsonPropertyName("price_change_percentage_1y")]
         public decimal PriceChangePercentageOneYear { get; set; }
-
-        [JsonIgnore]
-        public string PriceChangeOneYearPercentage => $"{PriceChangePercentageOneYear}%";
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Graph.API.Models.CoinGecko
+﻿namespace Graph.Domain.Entities.CoinGecko
 {
     public class MarketCap : Currency
     {

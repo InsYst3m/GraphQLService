@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Graph.API.Models.CoinGecko
+namespace Graph.Domain.Entities.CoinGecko
 {
     public class AllTimeLowChangePercentage : Currency
     {

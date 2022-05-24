@@ -1,6 +1,5 @@
-﻿using Graph.API.Models;
-using Graph.API.Models.CoinGecko;
-using Graph.API.Services.Interfaces;
+﻿using Graph.API.Services.Interfaces;
+using Graph.API.ViewModels;
 
 namespace Graph.API.GraphQL
 {
@@ -37,7 +36,7 @@ namespace Graph.API.GraphQL
             return await cryptoService.GetCryptoAssetAsync(cryptoAsset.CoinGeckoAbbreviation);
         }
 
-        public async Task<GlobalMarketData?> GetGlobalCryptoMarketDataAsync([Service] ICryptoService cryptoService)
+        public async Task<GlobalMarket?> GetGlobalCryptoMarketDataAsync([Service] ICryptoService cryptoService)
         {
             return await cryptoService.GetGlobalCryptoMarketDataAsync();
         }

@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Graph.API.Models.CoinGecko
+namespace Graph.Domain.Entities.CoinGecko
 {
-    public class AllTimeLowDate
+    public class AllTimeHighDate
     {
         [JsonPropertyName("usd")]
         public DateTime UsdDateTime { get; set; }

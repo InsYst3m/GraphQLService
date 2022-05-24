@@ -1,5 +1,4 @@
-﻿using Graph.API.Models;
-using Graph.API.Models.CoinGecko;
+﻿using Graph.API.ViewModels;
 
 namespace Graph.API.Services.Interfaces
 {
@@ -7,6 +6,6 @@ namespace Graph.API.Services.Interfaces
     {
         Task<List<DataAccess.Entities.CryptoAsset>> GetSupportedCryptoAssetsAsync();
         Task<CryptoAsset?> GetCryptoAssetAsync(string geckoId);
-        Task<GlobalMarketData?> GetGlobalCryptoMarketDataAsync();
+        Task<GlobalMarket?> GetGlobalCryptoMarketDataAsync();
     }
 }

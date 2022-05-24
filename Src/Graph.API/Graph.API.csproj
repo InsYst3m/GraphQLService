@@ -27,6 +27,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Graph.DataAccess\Graph.DataAccess.csproj" />
+	  <ProjectReference Include="..\Graph.Domain\Graph.Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
