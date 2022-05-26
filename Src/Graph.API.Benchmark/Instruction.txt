@@ -1,0 +1,19 @@
+﻿Links: https://chillicream.com/docs/strawberryshake/get-started/console
+
+1) dotnet new tool-manifest
+2) dotnet tool install StrawberryShake.Tools --local
+3) add packages: 
+	- StrawberryShake.Transport.Http
+	- StrawberryShake.CodeGeneration.CSharp.Analyzers
+	- Microsoft.Extensions.DependencyInjection
+	- Microsoft.Extensions.Http
+
+4) dotnet graphql init {{ServerUrl}} -n {{ClientName}} -p {{Path}}
+	- ClientName: GraphApiClient
+	- Path: ./GraphService
+
+5) add namespace to generated .graphqlrc.json
+6) Create named query: GetGlobalMarketDataQuery.graphql
+7) Change query Build Action to the GraphQL compiler to add it to source code generation process
+8) Build benchmark in Release mode: dotnet build -c Release
+9) Run: dotnet "D:\Repositories\InsYst3m\GraphQLService\Src\Graph.API.Benchmark\bin\Release\net6.0\Graph.API.Benchmark.dll"

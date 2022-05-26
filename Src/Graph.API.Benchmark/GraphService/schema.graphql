@@ -1,0 +1,44 @@
+﻿schema {
+  query: CryptoQuery
+}
+
+type CryptoQuery {
+  supportedCryptoAssets: [String!]!
+  cryptoAsset(abbreviation: String!): CryptoAsset
+  globalCryptoMarketData: GlobalMarket
+}
+
+type CryptoAsset {
+  name: String!
+  abbreviation: String!
+  currentPriceUsd: Decimal!
+  allTimeHighPriceUsd: Decimal!
+  allTimeHighChangePercentage: String!
+  allTimeHighDate: DateTime!
+  allTimeLowPriceUsd: Decimal!
+  allTimeLowChangePercentage: String!
+  allTimeLowDate: DateTime!
+  capitalizationUsd: Decimal!
+  rank: Long!
+  highTwentyFourHoursUsd: Decimal!
+  lowTwentyFourHoursUsd: Decimal!
+  priceChangePercentageTwentyFourHours: String!
+  priceChangePercentageSevenDays: String!
+  priceChangePercentageThirtyDays: String!
+  priceChangePercentageSixtyDays: String!
+  priceChangePercentageOneYear: String!
+}
+
+type GlobalMarket {
+  activeCryptoCurrencies: Long!
+  capitalizationUsd: Decimal!
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+"The built-in `Decimal` scalar type."
+scalar Decimal
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long
