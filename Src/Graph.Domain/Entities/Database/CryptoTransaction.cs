@@ -2,20 +2,22 @@
 {
     public class CryptoTransaction
     {
-        public CryptoTransaction(Portfolio portfolio, CryptoAsset cryptoAsset, User user)
+        public CryptoTransaction(Portfolio portfolio, CryptoAsset cryptoAsset)
         {
             ArgumentNullException.ThrowIfNull(portfolio, nameof(portfolio));
             ArgumentNullException.ThrowIfNull(cryptoAsset, nameof(cryptoAsset));
-            ArgumentNullException.ThrowIfNull(user, nameof(user));
 
             Portfolio = portfolio;
             CryptoAsset = cryptoAsset;
-            User = user;
         }
 
+        public long Id { get; set; }
+
+        public long PortfolioId { get; set; }
         public Portfolio Portfolio { get; set; }
+
+        public long CryptoAssetId { get; set; }
         public CryptoAsset CryptoAsset { get; set; }
-        public User User { get; set; }
 
         public decimal Amount { get; set; }
         public decimal BuyPrice { get; set; }

@@ -19,7 +19,7 @@ namespace Graph.API.GraphQL
 
         public async Task<CryptoAsset?> GetCryptoAssetAsync([Service] ICryptoService cryptoService, string abbreviation)
         {
-            List<DataAccess.Entities.CryptoAsset> cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
+            List<Domain.Entities.Database.CryptoAsset> cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
 
             if (!cryptoAssetsLookup.Any())
             {

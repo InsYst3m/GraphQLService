@@ -1,4 +1,4 @@
-﻿using Graph.DataAccess.Entities;
+﻿using Graph.Domain.Entities.Database;
 
 namespace Graph.DataAccess.Services.Interfaces
 {

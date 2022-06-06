@@ -21,6 +21,7 @@ services.Configure<GraphServiceSettings>(configuration.GetSection(GraphServiceSe
 services.Configure<CoinGeckoSettings>(configuration.GetSection(CoinGeckoSettings.SECTION_NAME),
     options => options.BindNonPublicProperties = true);
 
+services.AddMemoryCache();
 services.AddDataAccessLayer(configuration.GetConnectionString("DefaultConnection"));
 
 services.AddHttpClient(
