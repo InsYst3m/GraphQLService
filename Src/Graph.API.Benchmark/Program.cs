@@ -2,4 +2,4 @@
 using Graph.API.Benchmark;
 
 BenchmarkRunner
-    .Run<GraphApiProcessBechmark>();
+    .Run<GraphApiProcessBenchmark>();

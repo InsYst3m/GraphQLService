@@ -4,16 +4,16 @@
 namespace Graph.API
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketDataResult : global::System.IEquatable<GetGlobalMarketDataResult>, IGetGlobalMarketDataResult
+    public partial class GetSupportedCryptoAssetsResult : global::System.IEquatable<GetSupportedCryptoAssetsResult>, IGetSupportedCryptoAssetsResult
     {
-        public GetGlobalMarketDataResult(global::Graph.API.IGetGlobalMarketData_GlobalCryptoMarketData? globalCryptoMarketData)
+        public GetSupportedCryptoAssetsResult(global::System.Collections.Generic.IReadOnlyList<global::System.String> supportedCryptoAssets)
         {
-            GlobalCryptoMarketData = globalCryptoMarketData;
+            SupportedCryptoAssets = supportedCryptoAssets;
         }
 
-        public global::Graph.API.IGetGlobalMarketData_GlobalCryptoMarketData? GlobalCryptoMarketData { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String> SupportedCryptoAssets { get; }
 
-        public virtual global::System.Boolean Equals(GetGlobalMarketDataResult? other)
+        public virtual global::System.Boolean Equals(GetSupportedCryptoAssetsResult? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -30,7 +30,7 @@ namespace Graph.API
                 return false;
             }
 
-            return (((GlobalCryptoMarketData is null && other.GlobalCryptoMarketData is null) || GlobalCryptoMarketData != null && GlobalCryptoMarketData.Equals(other.GlobalCryptoMarketData)));
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(SupportedCryptoAssets, other.SupportedCryptoAssets));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -50,7 +50,7 @@ namespace Graph.API
                 return false;
             }
 
-            return Equals((GetGlobalMarketDataResult)obj);
+            return Equals((GetSupportedCryptoAssetsResult)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -58,9 +58,9 @@ namespace Graph.API
             unchecked
             {
                 int hash = 5;
-                if (GlobalCryptoMarketData != null)
+                foreach (var SupportedCryptoAssets_elm in SupportedCryptoAssets)
                 {
-                    hash ^= 397 * GlobalCryptoMarketData.GetHashCode();
+                    hash ^= 397 * SupportedCryptoAssets_elm.GetHashCode();
                 }
 
                 return hash;
@@ -69,112 +69,30 @@ namespace Graph.API
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket : global::System.IEquatable<GetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket>, IGetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket
+    public partial interface IGetSupportedCryptoAssetsResult
     {
-        public GetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket(global::System.Int64 activeCryptoCurrencies, global::System.Decimal capitalizationUsd)
-        {
-            ActiveCryptoCurrencies = activeCryptoCurrencies;
-            CapitalizationUsd = capitalizationUsd;
-        }
-
-        public global::System.Int64 ActiveCryptoCurrencies { get; }
-
-        public global::System.Decimal CapitalizationUsd { get; }
-
-        public virtual global::System.Boolean Equals(GetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (ActiveCryptoCurrencies == other.ActiveCryptoCurrencies) && CapitalizationUsd == other.CapitalizationUsd;
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * ActiveCryptoCurrencies.GetHashCode();
-                hash ^= 397 * CapitalizationUsd.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetGlobalMarketDataResult
-    {
-        public global::Graph.API.IGetGlobalMarketData_GlobalCryptoMarketData? GlobalCryptoMarketData { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetGlobalMarketData_GlobalCryptoMarketData
-    {
-        public global::System.Int64 ActiveCryptoCurrencies { get; }
-
-        public global::System.Decimal CapitalizationUsd { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket : IGetGlobalMarketData_GlobalCryptoMarketData
-    {
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String> SupportedCryptoAssets { get; }
     }
 
     /// <summary>
-    /// Represents the operation service of the GetGlobalMarketData GraphQL operation
+    /// Represents the operation service of the GetSupportedCryptoAssets GraphQL operation
     /// <code>
-    /// query GetGlobalMarketData {
-    ///   globalCryptoMarketData {
-    ///     __typename
-    ///     activeCryptoCurrencies
-    ///     capitalizationUsd
-    ///   }
+    /// query GetSupportedCryptoAssets {
+    ///   supportedCryptoAssets
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketDataQueryDocument : global::StrawberryShake.IDocument
+    public partial class GetSupportedCryptoAssetsQueryDocument : global::StrawberryShake.IDocument
     {
-        private GetGlobalMarketDataQueryDocument()
+        private GetSupportedCryptoAssetsQueryDocument()
         {
         }
 
-        public static GetGlobalMarketDataQueryDocument Instance { get; } = new GetGlobalMarketDataQueryDocument();
+        public static GetSupportedCryptoAssetsQueryDocument Instance { get; } = new GetSupportedCryptoAssetsQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x44, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x67, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x44, 0x61, 0x74, 0x61, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x63, 0x74, 0x69, 0x76, 0x65, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x69, 0x65, 0x73, 0x20, 0x63, 0x61, 0x70, 0x69, 0x74, 0x61, 0x6c, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x55, 0x73, 0x64, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "6f8dcfaf1bececc9dac6ee5f06e09ab2");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x41, 0x73, 0x73, 0x65, 0x74, 0x73, 0x20, 0x7b, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x41, 0x73, 0x73, 0x65, 0x74, 0x73, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "b9fa7fde843c2626ce75f97c0b63fb71");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -186,34 +104,30 @@ namespace Graph.API
     }
 
     /// <summary>
-    /// Represents the operation service of the GetGlobalMarketData GraphQL operation
+    /// Represents the operation service of the GetSupportedCryptoAssets GraphQL operation
     /// <code>
-    /// query GetGlobalMarketData {
-    ///   globalCryptoMarketData {
-    ///     __typename
-    ///     activeCryptoCurrencies
-    ///     capitalizationUsd
-    ///   }
+    /// query GetSupportedCryptoAssets {
+    ///   supportedCryptoAssets
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketDataQuery : global::Graph.API.IGetGlobalMarketDataQuery
+    public partial class GetSupportedCryptoAssetsQuery : global::Graph.API.IGetSupportedCryptoAssetsQuery
     {
-        private readonly global::StrawberryShake.IOperationExecutor<IGetGlobalMarketDataResult> _operationExecutor;
-        public GetGlobalMarketDataQuery(global::StrawberryShake.IOperationExecutor<IGetGlobalMarketDataResult> operationExecutor)
+        private readonly global::StrawberryShake.IOperationExecutor<IGetSupportedCryptoAssetsResult> _operationExecutor;
+        public GetSupportedCryptoAssetsQuery(global::StrawberryShake.IOperationExecutor<IGetSupportedCryptoAssetsResult> operationExecutor)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
         }
 
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetGlobalMarketDataResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetGlobalMarketDataResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default)
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetSupportedCryptoAssetsResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetSupportedCryptoAssetsResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest();
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetGlobalMarketDataResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetSupportedCryptoAssetsResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
             var request = CreateRequest();
             return _operationExecutor.Watch(request, strategy);
@@ -226,7 +140,7 @@ namespace Graph.API
 
         private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
-            return new global::StrawberryShake.OperationRequest(id: GetGlobalMarketDataQueryDocument.Instance.Hash.Value, name: "GetGlobalMarketData", document: GetGlobalMarketDataQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
+            return new global::StrawberryShake.OperationRequest(id: GetSupportedCryptoAssetsQueryDocument.Instance.Hash.Value, name: "GetSupportedCryptoAssets", document: GetSupportedCryptoAssetsQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
         }
 
         global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
@@ -236,22 +150,18 @@ namespace Graph.API
     }
 
     /// <summary>
-    /// Represents the operation service of the GetGlobalMarketData GraphQL operation
+    /// Represents the operation service of the GetSupportedCryptoAssets GraphQL operation
     /// <code>
-    /// query GetGlobalMarketData {
-    ///   globalCryptoMarketData {
-    ///     __typename
-    ///     activeCryptoCurrencies
-    ///     capitalizationUsd
-    ///   }
+    /// query GetSupportedCryptoAssets {
+    ///   supportedCryptoAssets
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetGlobalMarketDataQuery : global::StrawberryShake.IOperationRequestFactory
+    public partial interface IGetSupportedCryptoAssetsQuery : global::StrawberryShake.IOperationRequestFactory
     {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetGlobalMarketDataResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetGlobalMarketDataResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetSupportedCryptoAssetsResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetSupportedCryptoAssetsResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -260,14 +170,14 @@ namespace Graph.API
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GraphApiClient : global::Graph.API.IGraphApiClient
     {
-        private readonly global::Graph.API.IGetGlobalMarketDataQuery _getGlobalMarketData;
-        public GraphApiClient(global::Graph.API.IGetGlobalMarketDataQuery getGlobalMarketData)
+        private readonly global::Graph.API.IGetSupportedCryptoAssetsQuery _getSupportedCryptoAssets;
+        public GraphApiClient(global::Graph.API.IGetSupportedCryptoAssetsQuery getSupportedCryptoAssets)
         {
-            _getGlobalMarketData = getGlobalMarketData ?? throw new global::System.ArgumentNullException(nameof(getGlobalMarketData));
+            _getSupportedCryptoAssets = getSupportedCryptoAssets ?? throw new global::System.ArgumentNullException(nameof(getSupportedCryptoAssets));
         }
 
         public static global::System.String ClientName => "GraphApiClient";
-        public global::Graph.API.IGetGlobalMarketDataQuery GetGlobalMarketData => _getGlobalMarketData;
+        public global::Graph.API.IGetSupportedCryptoAssetsQuery GetSupportedCryptoAssets => _getSupportedCryptoAssets;
     }
 
     /// <summary>
@@ -276,55 +186,35 @@ namespace Graph.API
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGraphApiClient
     {
-        global::Graph.API.IGetGlobalMarketDataQuery GetGlobalMarketData { get; }
+        global::Graph.API.IGetSupportedCryptoAssetsQuery GetSupportedCryptoAssets { get; }
     }
 }
 
 namespace Graph.API.State
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketDataResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.GetGlobalMarketDataResult>
+    public partial class GetSupportedCryptoAssetsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.GetSupportedCryptoAssetsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public GetGlobalMarketDataResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        public GetSupportedCryptoAssetsResultFactory(global::StrawberryShake.IEntityStore entityStore)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
         }
 
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::Graph.API.IGetGlobalMarketDataResult);
-        public GetGlobalMarketDataResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::Graph.API.IGetSupportedCryptoAssetsResult);
+        public GetSupportedCryptoAssetsResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
             if (snapshot is null)
             {
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            if (dataInfo is GetGlobalMarketDataResultInfo info)
+            if (dataInfo is GetSupportedCryptoAssetsResultInfo info)
             {
-                return new GetGlobalMarketDataResult(MapIGetGlobalMarketData_GlobalCryptoMarketData(info.GlobalCryptoMarketData, snapshot));
+                return new GetSupportedCryptoAssetsResult(info.SupportedCryptoAssets);
             }
 
-            throw new global::System.ArgumentException("GetGlobalMarketDataResultInfo expected.");
-        }
-
-        private global::Graph.API.IGetGlobalMarketData_GlobalCryptoMarketData? MapIGetGlobalMarketData_GlobalCryptoMarketData(global::Graph.API.State.GlobalMarketData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            if (data is null)
-            {
-                return null;
-            }
-
-            IGetGlobalMarketData_GlobalCryptoMarketData returnValue = default !;
-            if (data?.__typename.Equals("GlobalMarket", global::System.StringComparison.Ordinal) ?? false)
-            {
-                returnValue = new GetGlobalMarketData_GlobalCryptoMarketData_GlobalMarket(data.ActiveCryptoCurrencies ?? throw new global::System.ArgumentNullException(), data.CapitalizationUsd ?? throw new global::System.ArgumentNullException());
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
+            throw new global::System.ArgumentException("GetSupportedCryptoAssetsResultInfo expected.");
         }
 
         global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
@@ -334,47 +224,45 @@ namespace Graph.API.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketDataResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    public partial class GetSupportedCryptoAssetsResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
         private readonly global::System.UInt64 _version;
-        public GetGlobalMarketDataResultInfo(global::Graph.API.State.GlobalMarketData? globalCryptoMarketData, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        public GetSupportedCryptoAssetsResultInfo(global::System.Collections.Generic.IReadOnlyList<global::System.String> supportedCryptoAssets, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
         {
-            GlobalCryptoMarketData = globalCryptoMarketData;
+            SupportedCryptoAssets = supportedCryptoAssets;
             _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
             _version = version;
         }
 
-        public global::Graph.API.State.GlobalMarketData? GlobalCryptoMarketData { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::System.String> SupportedCryptoAssets { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
         public global::System.UInt64 Version => _version;
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
-            return new GetGlobalMarketDataResultInfo(GlobalCryptoMarketData, _entityIds, version);
+            return new GetSupportedCryptoAssetsResultInfo(SupportedCryptoAssets, _entityIds, version);
         }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetGlobalMarketDataBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Graph.API.IGetGlobalMarketDataResult>
+    public partial class GetSupportedCryptoAssetsBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Graph.API.IGetSupportedCryptoAssetsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
         private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetGlobalMarketDataResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int64, global::System.Int64> _longParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Decimal, global::System.Decimal> _decimalParser;
-        public GetGlobalMarketDataBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetGlobalMarketDataResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetSupportedCryptoAssetsResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        public GetSupportedCryptoAssetsBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetSupportedCryptoAssetsResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
             _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
             _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _longParser = serializerResolver.GetLeafValueParser<global::System.Int64, global::System.Int64>("Long") ?? throw new global::System.ArgumentException("No serializer for type `Long` found.");
-            _decimalParser = serializerResolver.GetLeafValueParser<global::System.Decimal, global::System.Decimal>("Decimal") ?? throw new global::System.ArgumentException("No serializer for type `Decimal` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
         }
 
-        public global::StrawberryShake.IOperationResult<IGetGlobalMarketDataResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        public global::StrawberryShake.IOperationResult<IGetSupportedCryptoAssetsResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
         {
-            (IGetGlobalMarketDataResult Result, GetGlobalMarketDataResultInfo Info)? data = null;
+            (IGetSupportedCryptoAssetsResult Result, GetSupportedCryptoAssetsResultInfo Info)? data = null;
             global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
             if (response.Exception is null)
             {
@@ -410,10 +298,10 @@ namespace Graph.API.State
                 }
             }
 
-            return new global::StrawberryShake.OperationResult<IGetGlobalMarketDataResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+            return new global::StrawberryShake.OperationResult<IGetSupportedCryptoAssetsResult>(data?.Result, data?.Info, _resultDataFactory, errors);
         }
 
-        private (IGetGlobalMarketDataResult, GetGlobalMarketDataResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        private (IGetSupportedCryptoAssetsResult, GetSupportedCryptoAssetsResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
         {
             var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
             global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
@@ -421,62 +309,35 @@ namespace Graph.API.State
             {
                 snapshot = session.CurrentSnapshot;
             });
-            var resultInfo = new GetGlobalMarketDataResultInfo(DeserializeIGetGlobalMarketData_GlobalCryptoMarketData(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "globalCryptoMarketData")), entityIds, snapshot.Version);
+            var resultInfo = new GetSupportedCryptoAssetsResultInfo(DeserializeNonNullableStringNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "supportedCryptoAssets")), entityIds, snapshot.Version);
             return (_resultDataFactory.Create(resultInfo), resultInfo);
         }
 
-        private global::Graph.API.State.GlobalMarketData? DeserializeIGetGlobalMarketData_GlobalCryptoMarketData(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                return null;
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("GlobalMarket", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::Graph.API.State.GlobalMarketData(typename, activeCryptoCurrencies: DeserializeNonNullableInt64(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "activeCryptoCurrencies")), capitalizationUsd: DeserializeNonNullableDecimal(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "capitalizationUsd")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.Int64 DeserializeNonNullableInt64(global::System.Text.Json.JsonElement? obj)
+        private global::System.Collections.Generic.IReadOnlyList<global::System.String> DeserializeNonNullableStringNonNullableArray(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
                 throw new global::System.ArgumentNullException();
             }
 
-            return _longParser.Parse(obj.Value.GetInt64()!);
+            var @strings = new global::System.Collections.Generic.List<global::System.String>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                @strings.Add(DeserializeNonNullableString(child));
+            }
+
+            return @strings;
         }
 
-        private global::System.Decimal DeserializeNonNullableDecimal(global::System.Text.Json.JsonElement? obj)
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
                 throw new global::System.ArgumentNullException();
             }
 
-            return _decimalParser.Parse(obj.Value.GetDecimal()!);
+            return _stringParser.Parse(obj.Value.GetString()!);
         }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GlobalMarketData
-    {
-        public GlobalMarketData(global::System.String __typename, global::System.Int64? activeCryptoCurrencies = default !, global::System.Decimal? capitalizationUsd = default !)
-        {
-            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            ActiveCryptoCurrencies = activeCryptoCurrencies;
-            CapitalizationUsd = capitalizationUsd;
-        }
-
-        public global::System.String __typename { get; }
-
-        public global::System.Int64? ActiveCryptoCurrencies { get; }
-
-        public global::System.Decimal? CapitalizationUsd { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
@@ -523,7 +384,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::Graph.API.State.GraphApiClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.GetGlobalMarketDataQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.GetSupportedCryptoAssetsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.GraphApiClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.IGraphApiClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::Graph.API.State.GraphApiClientStoreAccessor>("GraphApiClient", services, serviceCollection);
@@ -555,13 +416,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetGlobalMarketDataResult>, global::Graph.API.State.GetGlobalMarketDataResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetGlobalMarketDataResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.IGetGlobalMarketDataQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Graph.API.IGetGlobalMarketDataResult>, global::Graph.API.State.GetGlobalMarketDataBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::Graph.API.IGetGlobalMarketDataResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::Graph.API.IGetGlobalMarketDataResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Graph.API.IGetGlobalMarketDataResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Graph.API.GetGlobalMarketDataQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Graph.API.IGetGlobalMarketDataQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.GetGlobalMarketDataQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetSupportedCryptoAssetsResult>, global::Graph.API.State.GetSupportedCryptoAssetsResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::Graph.API.IGetSupportedCryptoAssetsResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.IGetSupportedCryptoAssetsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Graph.API.IGetSupportedCryptoAssetsResult>, global::Graph.API.State.GetSupportedCryptoAssetsBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::Graph.API.IGetSupportedCryptoAssetsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::Graph.API.IGetSupportedCryptoAssetsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::Graph.API.IGetSupportedCryptoAssetsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Graph.API.GetSupportedCryptoAssetsQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Graph.API.IGetSupportedCryptoAssetsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.GetSupportedCryptoAssetsQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityIdSerializer, global::Graph.API.State.GraphApiClientEntityIdFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Graph.API.GraphApiClient>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::Graph.API.IGraphApiClient>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::Graph.API.GraphApiClient>(sp));

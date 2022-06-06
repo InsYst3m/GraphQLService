@@ -30,8 +30,4 @@
 	  <ProjectReference Include="..\Graph.Domain\Graph.Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Providers\Interfaces\" />
-	</ItemGroup>
-
 </Project>

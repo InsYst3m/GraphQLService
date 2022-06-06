@@ -20,9 +20,9 @@ namespace Graph.API.Benchmark
             _graphApiClient = serviceProvider.GetRequiredService<IGraphApiClient>();
         }
 
-        public async Task<IOperationResult<IGetGlobalMarketDataResult>> GetGlobalMarketDataAsync()
+        public async Task<IOperationResult<IGetSupportedCryptoAssetsResult>> GetSupportedCryptoAssetsAsync()
         {
-            IOperationResult<IGetGlobalMarketDataResult> result = await _graphApiClient.GetGlobalMarketData.ExecuteAsync();
+            IOperationResult<IGetSupportedCryptoAssetsResult> result = await _graphApiClient.GetSupportedCryptoAssets.ExecuteAsync();
 
             result.EnsureNoErrors();
 

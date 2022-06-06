@@ -8,15 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <GraphQL Remove="GraphService\Queries\GetGlobalMarketDataQuery.graphql" />
+    <GraphQL Remove="GraphService\Queries\GetSupportedCryptoAssets.graphql" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="GraphService\Queries\GetGlobalMarketDataQuery.graphql" />
+    <None Remove="GraphService\Queries\GetSupportedCryptoAssets.graphql" />
   </ItemGroup>
 
   <ItemGroup>
-    <GraphQLConfig Include="GraphService\Queries\GetGlobalMarketDataQuery.graphql" />
+    <GraphQLConfig Include="GraphService\Queries\GetSupportedCryptoAssets.graphql" />
   </ItemGroup>
 
   <ItemGroup>
