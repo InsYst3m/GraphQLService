@@ -14,6 +14,18 @@ namespace Graph.DataAccess.EntityConfigurations
                 .Property(x => x.Id)
                 .IsRequired()
                 .UseIdentityColumn();
+
+            builder
+                .Property(x => x.Amount)
+                .IsRequired()
+                .HasColumnType("decimal")
+                .HasPrecision(6);
+
+            builder
+                .Property(x => x.BuyPrice)
+                .HasColumnType("decimal")
+                .IsRequired()
+                .HasPrecision(6);
         }
     }
 }

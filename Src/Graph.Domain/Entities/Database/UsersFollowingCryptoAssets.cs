@@ -2,20 +2,11 @@
 {
     public class UsersFollowingCryptoAssets
     {
-        public UsersFollowingCryptoAssets(User user, CryptoAsset cryptoAsset)
-        {
-            ArgumentNullException.ThrowIfNull(user, nameof(user));
-            ArgumentNullException.ThrowIfNull(cryptoAsset, nameof(cryptoAsset));
-
-            User = user;
-            CryptoAsset = cryptoAsset;
-        }
-
         public long UserId { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = null!;
 
         public long CryptoAssetId { get; set; }
-        public CryptoAsset CryptoAsset { get; set; }
+        public CryptoAsset CryptoAsset { get; set; } = null!;
 
         // TODO: followers tracking params
     }
