@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Domain", "Graph.Domai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2D75FAD2-0475-40E1-BA3A-EBDD1BF77D8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph.API.Tests", "Graph.API.Tests\Graph.API.Tests.csproj", "{76E14BD2-7823-4B00-9DE5-A1ECA2859E2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.API.Tests", "Graph.API.Tests\Graph.API.Tests.csproj", "{76E14BD2-7823-4B00-9DE5-A1ECA2859E2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph.API.Benchmark", "Graph.API.Benchmark\Graph.API.Benchmark.csproj", "{307E943F-A685-4460-92BF-89ACCD8013C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.API.Benchmark", "Graph.API.Benchmark\Graph.API.Benchmark.csproj", "{307E943F-A685-4460-92BF-89ACCD8013C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
