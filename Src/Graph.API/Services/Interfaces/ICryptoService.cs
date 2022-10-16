@@ -1,11 +1,19 @@
 ﻿using Graph.API.ViewModels;
+using Graph.Domain.Entities.CryptoAssets;
 
 namespace Graph.API.Services.Interfaces
 {
-    public interface ICryptoService
-    {
-        Task<List<Domain.Entities.Database.CryptoAsset>> GetSupportedCryptoAssetsAsync();
-        Task<CryptoAsset?> GetCryptoAssetAsync(string geckoId);
-        Task<GlobalMarket?> GetGlobalCryptoMarketDataAsync();
-    }
+	public interface ICryptoService
+	{
+		/// <summary>
+		/// Get list of supported crypto assets from the database.
+		/// </summary>
+		/// <returns>
+		/// List with the supported crypto assets or empty list.
+		/// </returns>
+		Task<List<CryptoAsset>> GetSupportedCryptoAssetsAsync();
+
+		Task<CryptoAssetViewModel?> GetCryptoAssetAsync(string geckoId);
+		Task<GlobalMarketViewModel?> GetGlobalCryptoMarketDataAsync();
+	}
 }

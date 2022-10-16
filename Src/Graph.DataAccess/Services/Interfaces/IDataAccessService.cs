@@ -1,8 +1,8 @@
-﻿using Graph.Domain.Entities.Database;
+﻿using Graph.Domain.Entities.CryptoAssets;
 
 namespace Graph.DataAccess.Services.Interfaces
 {
-    public interface IDataAccessService
+	public interface IDataAccessService
     {
         Task<List<CryptoAsset>> GetCryptoAssetsLookupAsync();
     }

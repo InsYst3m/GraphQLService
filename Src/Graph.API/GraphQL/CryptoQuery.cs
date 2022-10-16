@@ -1,44 +1,44 @@
 ﻿using Graph.API.Services.Interfaces;
 using Graph.API.ViewModels;
+using Graph.Domain.Entities.CryptoAssets;
 
 namespace Graph.API.GraphQL
 {
-    public class CryptoQuery
-    {
-        public async Task<List<string>> GetSupportedCryptoAssets([Service] ICryptoService cryptoService)
-        {
-            var cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
+	public class CryptoQuery
+	{
+		public async Task<List<string>> GetSupportedCryptoAssets([Service] ICryptoService cryptoService)
+		{
+			List<CryptoAsset> cryptoAssetsLookup = 
+				await cryptoService.GetSupportedCryptoAssetsAsync();
 
-            if (cryptoAssetsLookup == null || !cryptoAssetsLookup.Any())
-            {
-                return new List<string>();
-            }
+			return cryptoAssetsLookup
+				.Select(x => x.Abbreviation)
+				.ToList();
+		}
 
-            return cryptoAssetsLookup.Select(x => x.Abbreviation).ToList();
-        }
+		public async Task<CryptoAssetViewModel?> GetCryptoAssetAsync([Service] ICryptoService cryptoService, string abbreviation)
+		{
+			List<CryptoAsset> cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
 
-        public async Task<CryptoAsset?> GetCryptoAssetAsync([Service] ICryptoService cryptoService, string abbreviation)
-        {
-            List<Domain.Entities.Database.CryptoAsset> cryptoAssetsLookup = await cryptoService.GetSupportedCryptoAssetsAsync();
+			if (!cryptoAssetsLookup.Any())
+			{
+				return null;
+			}
 
-            if (!cryptoAssetsLookup.Any())
-            {
-                return null;
-            }
+			CryptoAsset? cryptoAsset = cryptoAssetsLookup
+				.FirstOrDefault(x => x.Abbreviation.Equals(abbreviation, StringComparison.InvariantCultureIgnoreCase));
 
-            var cryptoAsset = cryptoAssetsLookup.FirstOrDefault(x => x.Abbreviation == abbreviation);
+			if (cryptoAsset == null)
+			{
+				return null;
+			}
 
-            if (cryptoAsset == null)
-            {
-                return null;
-            }
+			return await cryptoService.GetCryptoAssetAsync(cryptoAsset.CoinGeckoAbbreviation);
+		}
 
-            return await cryptoService.GetCryptoAssetAsync(cryptoAsset.CoinGeckoAbbreviation);
-        }
-
-        public async Task<GlobalMarket?> GetGlobalCryptoMarketDataAsync([Service] ICryptoService cryptoService)
-        {
-            return await cryptoService.GetGlobalCryptoMarketDataAsync();
-        }
-    }
+		public async Task<GlobalMarketViewModel?> GetGlobalCryptoMarketDataAsync([Service] ICryptoService cryptoService)
+		{
+			return await cryptoService.GetGlobalCryptoMarketDataAsync();
+		}
+	}
 }

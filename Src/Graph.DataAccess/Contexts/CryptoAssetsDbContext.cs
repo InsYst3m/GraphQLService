@@ -1,10 +1,12 @@
 ﻿using Graph.DataAccess.EntityConfigurations;
-using Graph.Domain.Entities.Database;
+using Graph.Domain.Entities.Common;
+using Graph.Domain.Entities.CryptoAssets;
+
 using Microsoft.EntityFrameworkCore;
 
-namespace Graph.DataAccess
+namespace Graph.DataAccess.Contexts
 {
-    public class AppDbContext : DbContext
+    public class CryptoAssetsDbContext : DbContext
     {
         public DbSet<CryptoAsset> CryptoAssets { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
@@ -13,7 +15,7 @@ namespace Graph.DataAccess
         public DbSet<CryptoTransaction> CryptoTransactions { get; set; } = null!;
         public DbSet<UsersFollowingCryptoAssets> UsersFollowingCryptoAssets { get; set; } = null!;
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) 
+        public CryptoAssetsDbContext(DbContextOptions<CryptoAssetsDbContext> options)
             : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

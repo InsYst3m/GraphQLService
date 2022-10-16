@@ -1,4 +1,4 @@
-﻿using Graph.Domain.Entities.Database;
+﻿using Graph.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,4 +1,6 @@
-﻿namespace Graph.Domain.Entities.Database
+﻿using Graph.Domain.Entities.Common;
+
+namespace Graph.Domain.Entities.CryptoAssets
 {
     public class Portfolio
     {

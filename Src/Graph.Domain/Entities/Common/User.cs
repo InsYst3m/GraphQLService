@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Graph.Domain.Entities.Database
+using Graph.Domain.Entities.CryptoAssets;
+
+namespace Graph.Domain.Entities.Common
 {
     public class User
     {
@@ -13,7 +15,6 @@ namespace Graph.Domain.Entities.Database
         public string Email { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
-        public long ChatId { get; set; }
 
         public IList<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
         public IList<UsersFollowingCryptoAssets> FollowedCryptoAssets { get; set; } = new List<UsersFollowingCryptoAssets>();

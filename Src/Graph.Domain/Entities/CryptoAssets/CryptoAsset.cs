@@ -1,4 +1,4 @@
-﻿namespace Graph.Domain.Entities.Database
+﻿namespace Graph.Domain.Entities.CryptoAssets
 {
     public class CryptoAsset
     {
