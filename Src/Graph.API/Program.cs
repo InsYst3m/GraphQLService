@@ -40,6 +40,7 @@ services.AddCors();
 services.AddScoped<IDataAccessService, DataAccessService>();
 services.AddScoped<ICryptoService, CryptoService>();
 
+// 1
 // TODO: google auth
 //services.AddAuthentication();
 //services.AddAuthorization();
